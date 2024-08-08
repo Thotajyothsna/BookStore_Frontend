@@ -1,0 +1,36 @@
+<div class="WithoutLogin" *ngIf="!WishListExists()">
+    <h1 style="font-weight: 500;">PLEASE LOG IN</h1>
+    <p style="margin-top: -10px; color: #878787;">Login to view items in your wishlist</p>
+    <br>
+    <div><img src="" alt=""></div>
+    <br>
+    <div><button class="btn" mat-flat-button routerLink="/login">LOGIN/SIGNUP</button></div>
+</div>
+<div class="container" *ngIf="WishListExists()">
+    <div class="title">
+        <h3 class="home" routerLink="/dashboard/allbooks">Home/</h3>
+        <span style="font-size: 18px;margin-top: -5px;">My WishList</span>
+    </div>
+    <div class="head">
+        <h1 style="margin: 15px 40px; ">My WishList ({{ WishLists.length }})</h1>
+    </div>
+    <div *ngFor="let Item of WishLists" class="card">
+        <div  class="cart">
+            <div><img style="width: 65px; height: 85px;" src="{{Item.image}}" alt=""></div>
+            <div class="details">
+                <h3>{{Item.bookName}}</h3>
+                <h5 style="color: lightgray; margin-top: -15px;">by {{Item.authorName}}</h5>
+                <div style="display: flex; gap: 5px; margin-top: -10px;">
+                    <div style="font-weight: 500;">Rs.{{Item.discountPrice}}</div>
+                    <div style="color: #878787;"><s>Rs.{{Item.originalPrice}}</s></div>
+                </div>
+            </div>
+            <div style="display: flex; width: 100%; align-items: flex-start; justify-content: end;">
+                <button mat-icon-button (click)="removeWishList(Item)"><img src="../../assets/Images/delete.svg" alt=""></button>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <span style="margin-left: 170px;">Copyright &copy; 2020, Bookstore Private Limited. All Rights Reserved.</span>
+</footer>

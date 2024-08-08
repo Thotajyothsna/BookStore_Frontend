@@ -1,0 +1,33 @@
+<div class="WithoutLogin" *ngIf="!haveOrders()">
+    <h1 style="font-weight: 500;">PLEASE LOG IN</h1>
+    <p style="margin-top: -10px; color: #878787;">Login to view items in your orders</p>
+    <br>
+    <div><img src="" alt=""></div>
+    <br>
+    <div><button class="btn" mat-flat-button routerLink="/login">LOGIN/SIGNUP</button></div>
+</div>
+<div class="container" *ngIf="haveOrders()">
+    <div class="title">
+        <h1 class="home" routerLink="/dashboard/allbooks">Home/</h1>
+        <span style="font-size: 18px;margin-top: -5px;">My Order</span>
+    </div>
+    <div *ngFor="let order of ListofOrders" class="card" >
+        <div  class="cart" >
+            <div><img style="width: 65px; height: 85px;" src="{{order.image}}" alt=""></div>
+            <div class="details">
+                <h3>{{order.bookName}}</h3>
+                <h5 style="color: lightgray; margin-top: -15px;">by {{order.authorName}}</h5>
+                <div style="display: flex; gap: 5px; margin-top: -10px;">
+                    <div style="font-weight: 500;">Rs.{{order.discountPrice}}</div>
+                    <div style="color: #878787;"><s>Rs.{{order.originalPrice}}</s></div>
+                </div>
+            </div>
+            <ul style="display: flex; width: 100%; align-items: flex-start; justify-content: end;">
+                <li style="font-size: medium;">Order Placed on {{order.orderePlacedDate | date: 'MMM dd'}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <span style="margin-left: 170px;">Copyright &copy; 2020, Bookstore Private Limited. All Rights Reserved.</span>
+</footer>

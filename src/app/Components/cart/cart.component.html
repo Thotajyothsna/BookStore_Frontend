@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="title">
+        <h1 class="home" routerLink="/dashboard/allbooks">Home/</h1>
+        <span class="my-cart">My cart</span>
+    </div>
+    <div class="card" *ngIf="haveCart()">
+        <div class="head">
+            <h2>My cart({{count}})</h2>
+            <div class="locBox"><mat-icon class="pin-icon">pin_drop</mat-icon> <span>Use current location</span></div>
+        </div>
+        <div *ngFor="let cart of Listofcarts" class="cart">
+            <div><img class="cart-image" src="{{cart.image}}" alt=""></div>
+            <div class="details">
+                <h3>{{cart.bookName}}</h3>
+                <h5 class="author">by {{cart.authorName}}</h5>
+                <div class="price-info">
+                    <div class="discount-price">Rs.{{cart.totalPrice}}</div>
+                    <div class="original-price"><s>Rs.{{cart.originalPrice}}</s></div>
+                </div>
+                <div class="quantity-controls">
+                    <button mat-icon-button class="circle" (click)="updateQuantity(cart, false)">-</button>
+                    <div class="box">{{cart.quantity}}</div>
+                    <button mat-icon-button class="circle" (click)="updateQuantity(cart, true)">+</button>
+                    <button (click)="remove(cart.cartId)" mat-button class="remove-btn">Remove</button>
+                </div>
+            </div>
+            <button mat-button class="orderbtn" *ngIf="!address" (click)="address = true; checkout(cart);">PLACE ORDER</button>
+        </div>
+    </div>
+    <div class="card">
+        <h2 *ngIf="!address" class="address-title">Address Details</h2>
+        <div *ngIf="address">
+            <div class="head">
+                <h2 class="customer-title">Customer Details</h2>
+                <button mat-flat-button class="new-address-btn">Add New Address</button>
+            </div>
+            <div class="form">
+                <form [formGroup]="AddressForm" (ngSubmit)="AddAddress()">
+                    <div class="first">
+                        <div class="formItem">
+                            <label>Full Name</label>
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Full Name" formControlName="fullName">
+                            </mat-form-field>
+                        </div>
+                        <div class="formItem1">
+                            <label>Mobile Number</label>
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Mobile Number" formControlName="mobileNumber">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="address-container">
+                        <label>Address</label>
+                        <mat-form-field appearance="outline">
+                            <textarea matInput placeholder="Enter your Address" formControlName="address"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="first">
+                        <div class="formItem">
+                            <label>city/town</label>
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="city" formControlName="city">
+                            </mat-form-field>
+                        </div>
+                        <div class="formItem1">
+                            <label>State</label>
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="State" formControlName="state">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="formItem">
+                        <label>Type</label>
+                        <mat-radio-group formControlName="type" [formControl]="floatLabelControl" class="type-options">
+                            <mat-radio-button value="1">Home</mat-radio-button>
+                            <mat-radio-button value="2">Work</mat-radio-button>
+                            <mat-radio-button value="3">Others</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </form>
+            </div>
+            <div class="continue">
+                <button mat-flat-button *ngIf="!order" (click)="order=true; AddAddress();">CONTINUE</button>                
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <h2 class="order-summary-title">Order Summary</h2>
+        <div *ngIf="order" class="cart">
+            <div><img class="cart-image" src="{{cartOrder.image}}" alt=""></div>
+            <div class="details">
+                <h3>{{cartOrder.bookName}}</h3>
+                <h5 class="author">by {{cartOrder.authorName}}</h5>
+                <div class="price-info">
+                    <div class="discount-price">Rs.{{cartOrder.totalPrice}}</div>
+                    <div class="original-price"><s>Rs.{{cartOrder.originalPrice}}</s></div>
+                </div>
+            </div>
+            <button mat-button class="orderbtn" *ngIf="order" (click)="placeOrder();">CHECKOUT</button>
+        </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <span class="footer-text">Copyright &copy; 2020, Bookstore Private Limited. All Rights Reserved.</span>
+  </footer>
+  

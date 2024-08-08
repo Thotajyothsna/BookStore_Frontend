@@ -1,0 +1,55 @@
+<div class="container" *ngIf="BookExists()">
+    <div class="title">
+      <h1 class="home" routerLink="/dashboard/allbooks">Home/</h1>
+      <span style="font-size: 18px;margin-top: -5px;">Book({{id}})</span>
+    </div>
+  <div style="display: flex;">
+      <div>
+        <div><img class="small" src="{{bookObject.image}}" alt=""></div>
+        <div><img class="small" src="{{bookObject.image}}" alt=""></div>
+      </div>
+      <mat-card class="card" routerLink="/dashboard/"style="border: lightgray solid 1px;">
+          <mat-card-header class="headers">
+            <mat-card-title><img class="image" src="{{bookObject.image}}" alt=""></mat-card-title>
+          </mat-card-header>
+          <mat-card-content style="display: flex; justify-content: space-between;">
+              <div><button style="background-color: brown; color: white;" mat-flat-button (click)="AddToCart()">ADD TO BAG</button></div>
+              <div><button style="background-color: #333333; color: white;" mat-flat-button (click)="AddToWishList()">WISHLIST</button></div>
+          </mat-card-content>
+      </mat-card>
+      <div style="margin-left: 30px; width: 600px;">
+        <h1>{{bookObject.bookName}}</h1>
+        <h4 style="color:#878787; margin-top: -13px;">by {{bookObject.authorName}}</h4>
+        <div class="ratings" style="margin-top: -10px;">
+          <div class="ratingbox">
+            <span>{{bookObject.rating}}</span>
+            <mat-icon style="font-size: 15px; align-content: center;">star</mat-icon>
+          </div>
+          <div style="color: #878787;">({{bookObject.noOfPeopleRated}})</div>
+        </div>
+        <div class="ratings" style="margin-top: 10px;">
+          <div ><h1 style="font-weight: 500;">Rs.{{bookObject.discountPrice}}</h1></div>
+          <div style="color: #878787;"><h2><s>Rs.{{bookObject.originalPrice}}</s></h2></div>
+        </div>
+        <hr>
+        <ul style="margin-left: -20px; color: #878787;"><li>Book Details<br>
+          {{bookObject.description}}
+        </li></ul>
+        <hr>
+        <div style="margin-top: 10px;"><h3>Customer FeedBack</h3></div>
+        <div style="width: 100%; height: auto; padding: 30px; background-color:#F5F5F5;" class="rating">
+          <h4>Overall rating</h4>
+          <div class="stars">
+            <!-- <span class="filled" *ngFor="let star of [1, 2, 3, 4, 5]" 
+              [innerHTML]="star <= rating ? '&#9733;' : '&#9734;'">
+            </span> -->
+          </div>
+          <textarea style="width: 100%;" rows="5" ></textarea>
+          <div style="display: flex; justify-content: end;">
+            <button mat-button style="display: flex; background-color: rgb(76, 76, 241); color: white;">Submit</button>
+          </div>
+        </div>
+        
+      </div>
+  </div>
+  </div>

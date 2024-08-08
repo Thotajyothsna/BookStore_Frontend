@@ -1,0 +1,68 @@
+.container{
+    margin-left: 170px;
+    margin-top: 7px;
+}
+.home{
+    margin-top: 9px; 
+    color: lightgrey; 
+    font-size: 15px; 
+    cursor: pointer;
+}
+.title{
+    display: flex;
+    gap: 5px;
+    width: 200px;
+    align-items: center;
+    justify-content: flex-start ;
+}
+.small{
+    width: 35px;
+    height: 45px;
+}
+.card{
+    width: 340px;
+    height: 400px;
+}
+mat-card{
+    border-radius: 5px!important;
+}
+.headers{
+    height: 380px;
+    background-color:#F5F5F5;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px!important;
+}
+.image{
+    width: 230px;
+    height: 290px;
+}
+.ratings{
+    display: flex;
+    gap:5px;
+}
+.ratingbox{
+    background-color: #388E3C; 
+    color: #FFFFFF; 
+    width:40px; 
+    display: flex; 
+    justify-content: flex-start;
+    gap:5px; 
+    align-content: center; 
+    padding-left: 3px;
+}
+.stars{
+    display: flex;
+    font-size: 26px;
+    padding-bottom: 10px;
+    gap: 10px;
+  }
+  .filled {
+    cursor: pointer;
+    color: gold;
+  }
+
+.Username{
+    font-size: 20px;
+    font-weight: 400;
+}

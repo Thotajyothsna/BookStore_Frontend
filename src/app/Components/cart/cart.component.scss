@@ -1,0 +1,207 @@
+.container {
+    margin-left: 170px;
+    margin-top: 7px;
+    position: relative;
+    min-height: 83%;
+}
+
+.home {
+    margin-top: 9px; 
+    color: lightgrey; 
+    font-size: 15px; 
+    cursor: pointer;
+}
+
+.title {
+    display: flex;
+    gap: 5px;
+    width: 200px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.card {
+    width: 600px; /* reduced width */
+    height: auto;
+    border: 1px solid lightgray;
+    margin-bottom: 20px;
+    padding: 10px; /* added padding for better spacing */
+    position: relative; /* for positioning place order button */
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px; /* reduced margin */
+    align-items: center;
+}
+
+.locBox {
+    display: flex;
+    border: 1px solid lightgray;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 15px;
+    width: 250px; /* reduced width */
+    height: 35px; /* reduced height */
+    gap: 7px;
+}
+
+.cart {
+    display: flex;
+    justify-content: space-between; /* added to distribute items */
+    margin-left: 20px; /* reduced margin */
+    margin-bottom: 15px; /* reduced margin */
+    position: relative; /* for positioning place order button */
+}
+
+.cart-image {
+    width: 80px; /* set fixed width for images */
+    height: auto; /* keep aspect ratio */
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px; /* reduced margin */
+    flex-grow: 1; /* allows details to take available space */
+}
+
+.details h3 {
+    margin-bottom: 5px; /* reduce gap between book name and author name */
+}
+
+.details h5.author {
+    margin-top: 0; /* remove extra space */
+}
+
+.price-info {
+    display: flex;
+    gap: 10px;
+    align-items: center; /* align price info items */
+}
+
+.discount-price, .original-price {
+    margin: 0; /* remove extra margin */
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px; /* added margin for spacing */
+}
+
+.circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px; /* increased size for better usability */
+    height: 25px; /* increased size for better usability */
+    border: 1px solid lightgrey;
+}
+
+.box {
+    width: 40px; /* reduced width */
+    height: 30px;
+    border: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orderbtn {
+    position: absolute; /* position button at the corner */
+    bottom: 10px;
+    right: 10px;
+    background-color: #3371B5; 
+    color: white;
+}
+
+.first {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.imgg {
+    padding-right: 33px;
+    width: 65%;
+    height: 60%;
+}
+
+.text {
+    font-family: "Google Sans", Roboto, "Noto Sans Myanmar UI", Arial, sans-serif;
+}
+
+.hint {
+    margin-top: -13px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+.formItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio {
+    display: flex;
+    gap: 60px;
+    margin-top: 7px;
+}
+
+.radio input {
+    width: 15px;
+    height: 15px;
+    accent-color: brown;
+    margin-right: 5px;
+}
+
+.form {
+    width: 512px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    margin-bottom: 30px;
+}
+
+.formItem1 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.continue {
+    display: flex;
+    width: 100%;
+    margin-left: 570px;
+    margin-bottom: 10px;
+}
+
+.continue button {
+    width: 172px;
+    background-color: #3371B5;
+    color: white;
+}
+
+.footer {
+    position: static;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.footer-text {
+    margin-left: 170px;
+}

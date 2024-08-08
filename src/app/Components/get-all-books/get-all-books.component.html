@@ -1,0 +1,110 @@
+<!-- <div class="container" *ngIf="booksPresented()">
+  <div class="title">
+    <h1>Books</h1>
+    <div class="sort-options">
+      <button mat-button [matMenuTriggerFor]="menu" class="sort-button">
+        <h5>Sort by relevance</h5>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <span>Price: Low to High</span>
+        </button>
+        <button mat-menu-item>
+          <span>Price: High to Low</span>
+        </button>
+        <button mat-menu-item>
+          <span>Newest Arrivals</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let Book of ListofBooks" class="card">
+      <mat-card (click)="viewBook(Book)" class="card-content" title="Quick View">
+        <mat-card-header class="headers">
+          <mat-card-title>
+            <img src="{{Book.image}}" alt="{{ Book.bookName }}" class="image" />
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h3>{{ Book.bookName }}</h3>
+          <div class="author-name">by {{ Book.authorName }}</div>
+          <div class="ratings">
+            <div class="ratingbox">
+              <span>{{ Book.rating }}</span>
+              <mat-icon class="star-icon">star</mat-icon>
+            </div>
+            <div class="rating-count">({{ Book.noOfPeopleRated }})</div>
+          </div>
+          <div class="prices">
+            <div class="discount-price">Rs.{{ Book.discountPrice }}</div>
+            <div class="original-price"><s>Rs.{{ Book.originalPrice }}</s></div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <span>Copyright &copy; 2020, Bookstore Private Limited. All Rights Reserved.</span>
+</footer> -->
+
+
+
+
+<div class="container" *ngIf="BooksAvailable()">
+  <div class="title">
+      <h1 style="margin-top: 9px;">Books</h1>
+      <span>({{AllBooks.length}} Books)</span>
+  </div>
+  <div>
+      <button mat-button [matMenuTriggerFor]="menu" style="width: 150px; padding-top: 7px; border: 1px solid black;">
+          <h5 style="font-size: 13px;" >Sort by relevance</h5>
+      </button>
+      <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <span>Price: Low to High</span>
+          </button>
+          <button mat-menu-item>
+            <span>Price: High to Low</span>
+          </button>
+          <button mat-menu-item>
+            <span>Newest Arrivals</span>
+          </button>
+      </mat-menu>
+  </div>
+</div>
+<div class="row">
+<div *ngFor="let Book of AllBooks" class="card" >
+  <mat-card (click)="DisplayBook(Book)" style="border: lightgray solid 1px;" title="Quick View">
+      <mat-card-header class="headers">
+        <mat-card-title><img class="image" src="{{Book.image}}" alt=""></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <h3 style="font-weight: 500;">{{Book.bookName}}</h3>
+          <div style="margin-top: -15px;"><span style="color: #878787;">by {{Book.authorName}}</span></div>
+          <div class="ratings">
+            <div class="ratingbox">
+              <span>{{Book.rating.toFixed(1)}}</span>
+              <mat-icon style="font-size: 15px; align-content: center; margin-top: -2px; margin-left: -2px;">star</mat-icon>
+            </div>
+            <div style="color: #878787;">({{Book.noOfpeopleRated}})</div>
+          </div>
+          <div class="ratings">
+            <div style="font-weight: 500;">Rs.{{Book.discountPrice}}</div>
+            <div class="prices" style="display: inline-block;">
+              <div style="color: #878787;">
+                <s>Rs.{{Book.originalPrice}}</s>
+                <span style="color:chocolate">-{{Book.discountRate}}%</span>
+              </div>
+            </div>
+          </div>
+      </mat-card-content>
+  </mat-card>
+</div>
+</div>
+<footer class="footer">
+<span style="margin-left: 170px;">Copyright &copy; 2020, Bookstore Private Limited. All Rights Reserved.</span>
+</footer>

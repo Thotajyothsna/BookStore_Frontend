@@ -1,0 +1,43 @@
+<mat-toolbar class="nav">
+      <div class="main">
+          <div class="div1" (click)="dashboard()">
+              <div><img src="../../assets/Images/education.svg" alt=""></div>
+              <h1>BookStore</h1>
+          </div>
+          <div class="search-container">
+              <button class="header-btn-menu" mat-icon-button aria-label="menu">
+                <img src="../../assets/Images/search.svg" alt="">
+              </button>
+              <input type="text" placeholder="Search" (keyup)="searchingBook($event)"/>
+            </div>
+      </div>
+      <div class="endItems">
+          <div class="d1">
+              <button mat-button class="item" [matMenuTriggerFor]="profile">
+                  <img src="../../assets/Images/person.svg" alt="">
+                  <p style="font-size: 12px; color: #FFFFFF; margin-top:-10px;">Profile</p>
+              </button>
+              <mat-menu #profile="matMenu">
+                  <h4>Hello {{fullName}}</h4>
+                  <button mat-menu-item routerLink="/dashboard/profile">
+                      <span>Profile</span>
+                  </button>
+                  <button mat-menu-item routerLink="/dashboard/orders">
+                    <span>my order</span>
+                  </button>
+                  <button mat-menu-item routerLink="/dashboard/mywishlist">
+                    <span>Wish List</span>
+                  </button>
+                  <button mat-menu-item (click)="logOut()">Logout</button>
+                </mat-menu>
+          </div>
+          <div class="d1">
+              <button routerLink="/dashboard/cart" mat-button class="item">
+                  <div style="display: flex;"><img src="../../assets/Images/carts.svg" alt=""><span *ngIf='countpresent()' class="cartvalue">{{countCart}}</span></div>
+                  <p style="font-size: 12px; color: #FFFFFF;">Cart</p>
+              </button>
+          </div>
+      </div>
+
+</mat-toolbar>
+<router-outlet></router-outlet>

@@ -1,0 +1,113 @@
+<div class="WithoutLogin" *ngIf="!login()">
+    <h1 style="font-weight: 500;">PLEASE LOG IN</h1>
+    <p style="margin-top: -10px; color: #878787;">Login to view items in your orders</p>
+    <br>
+    <div><img  alt=""></div>
+    <br>
+    <div><button class="btn" mat-flat-button routerLink="/login">LOGIN/SIGNUP</button></div>
+</div>
+<div class="container">
+    <div class="title">
+        <h1 class="home" routerLink="/dashboard/allbooks">Home/</h1>
+        <span style="font-size: 18px;margin-top: -5px;">Profile</span>
+    </div>
+    <div>
+        <div class="head">
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <h1>Personal Details</h1>
+                <p *ngIf="isdisable" (click)="isdisable=false">Edit</p>
+                <p *ngIf="!isdisable" (click)="isdisable=true">Cancel</p>
+            </div>
+            <button *ngIf="!isdisable" (click)="updateUser(); isdisable=true;" mat-flat-button style="background-color: rgb(68, 68, 196); color: white;">Save</button>
+        </div>
+        <div>
+            <form>
+                <div class="formItem">
+                    <div><label class="label">Full Name</label></div>
+                    <div>
+                        <mat-form-field appearance="outline" class="input">
+                            <input matInput [(ngModel)]="userDetail.fullName" name="fullName" [disabled]="isdisable">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="formItem">
+                    <div><label class="label">Email Id</label></div>
+                    <div >
+                        <mat-form-field appearance="outline" class="input">
+                            <input matInput [(ngModel)]="userDetail.email" name="email" [disabled]="isdisable">
+                        </mat-form-field>                        
+                    </div>
+                </div>
+                <div class="formItem">
+                   <div><label class="label">Password</label></div>
+                   <div>
+                       <mat-form-field appearance="outline" class="input">
+                           <input matInput type="text" [(ngModel)]="userDetail.password" name="password" [disabled]="isdisable">
+                       </mat-form-field>                        
+                   </div>
+               </div>
+               <div class="formItem">
+                   <div><label class="label">Mobile Number</label></div>
+                   <div>
+                       <mat-form-field appearance="outline" class="input">
+                        <div>
+                           <input matInput maxlength="10" placeholder="Phone Number" [(ngModel)]="userDetail.mobileNumber" name="mobileNumber" [disabled]="isdisable">
+                        </div>
+                       </mat-form-field>                        
+                   </div>
+               </div>
+            </form>
+        </div>
+        <div class="head">
+            <h1>Address Details</h1>
+            <button mat-flat-button style="border: 1px solid #A03037; border-radius: 2px; color: #A03037; font-size: 15px;">Add New Address</button>
+        </div>
+        <div *ngFor="let Address of ListOfAddress; let i=index ">
+            <div *ngIf="haveAddresses()">
+                <div class="head">
+                    <div style="display: flex; gap: 15px; align-items: center;">
+                        <h1>{{i+1}}.{{Address.type}}</h1>
+                        <p *ngIf="disableAddress" (click)="disableAddress=false" >Edit</p>
+                        <p *ngIf="!disableAddress" (click)="disableAddress=true">Cancel</p>
+                    </div>
+                    <button *ngIf="!disableAddress" (click)="updateAddress(Address);disableAddress=true" mat-flat-button style="background-color: rgb(68, 68, 196); color: white;">Save</button>
+                </div>
+                <div>
+                    <form>
+                        <div class="formItem">
+                            <label>Address</label>
+                            <mat-form-field appearance="outline" style="width: 48%;">
+                                <textarea matInput [(ngModel)]="Address.address" name="address" [disabled]="disableAddress"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="first">
+                          <div class="formItem" style="width: 50%;">
+                            <label>city/town</label>
+                            <mat-form-field appearance="outline">
+                                <input matInput [(ngModel)]="Address.city" name="city" [disabled]="disableAddress"/>
+                            </mat-form-field>
+                          </div>
+                          <div class="formItem1">
+                            <label>State</label>
+                            <mat-form-field appearance="outline">
+                                <input matInput [(ngModel)]="Address.state" name="state" [disabled]="disableAddress"/>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="formItem">
+                            <label>Type</label>
+                            <mat-radio-group [(ngModel)]="Address.type" name="type" style="display: flex; gap: 50px;" [disabled]="disableAddress">
+                                <mat-radio-button value="Home">Home</mat-radio-button>
+                                <mat-radio-button value="Work">Work</mat-radio-button>
+                                <mat-radio-button value="Others">Others</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <span style="margin-left: 170px;">Copyright &copy; 2020, Bookstore Private Limited. All Rights Reserved.</span>
+</footer>
